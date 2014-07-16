@@ -12,6 +12,32 @@
     <clobbers target="Mixpanel" />
   </js-module>
 
+    <!-- android -->
+    <platform name="android">
+        <source-file src="src/com/mixpanel/android/CDVMixpanel.java" target-dir="src/com/mixpanel/android" />
+        
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <service android:name="com.tenforwardconsulting.cordova.bgloc.LocationUpdateService" android:enabled="true" android:process=":remote" />
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+            <uses-permission android:name="android.permission.WAKE_LOCK" />
+            <uses-permission android:name="android.permission.VIBRATE"/>
+            <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+            <permission android:name="$PACKAGE_NAME.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+            <uses-permission android:name="$PACKAGE_NAME.permission.C2D_MESSAGE" />
+        </config-file>   
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="Mixpanel">
+                <param name="android-package" value="com.mixpanel.android.CDVMixpanel"/>
+            </feature>
+        </config-file> 
+     </platform>  
+
   <platform name="ios">
     <config-file target="config.xml" parent="/*">
       <feature name="Mixpanel">
