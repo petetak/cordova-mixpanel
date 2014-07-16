@@ -9,7 +9,7 @@
     <engine name="cordova" version=">=3.0.0" />
   </engines>
   <js-module src="www/Mixpanel.js" name="Mixpanel">
-    <clobbers target="Mixpanel" />
+    <clobbers target="navigator.mixpanel" />
   </js-module>
 
     <!-- android -->
