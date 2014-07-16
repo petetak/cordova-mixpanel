@@ -14,7 +14,7 @@
 
     <!-- android -->
     <platform name="android">
-        <source-file src="src/com/mixpanel/android/CDVMixpanel.java" target-dir="src/com/mixpanel/android" />
+        <source-file src="src/android/com/mixpanel/android/CDVMixpanel.java" target-dir="src/com/mixpanel/android" />
         
 
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
