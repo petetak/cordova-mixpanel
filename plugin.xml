@@ -15,11 +15,6 @@
     <!-- android -->
     <platform name="android">
         <source-file src="src/android/com/mixpanel/android/CDVMixpanel.java" target-dir="src/com/mixpanel/android" />
-        
-
-        <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <service android:name="com.tenforwardconsulting.cordova.bgloc.LocationUpdateService" android:enabled="true" android:process=":remote" />
-        </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/manifest">
             <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
