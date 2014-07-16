@@ -15,7 +15,43 @@
     <!-- android -->
     <platform name="android">
         <source-file src="src/android/com/mixpanel/android/CDVMixpanel.java" target-dir="src/com/mixpanel/android" />
-
+                <source-file src="src/android/com/mixpanel/android/mpmetrics/AnalyticsMessages.java" target-dir="src/com/mixpanel/android/mpmetrics" />
+            <source-file src="src/android/com/mixpanel/android/mpmetrics/BackgroundCapture.java" target-dir="src/com/mixpanel/android/mpmetrics" />
+            <source-file src="src/android/com/mixpanel/android/mpmetrics/BadDecideObjectException.java" target-dir="src/com/mixpanel/android/mpmetrics" />
+            <source-file src="src/android/com/mixpanel/android/mpmetrics/ConfigurationChecker.java" target-dir="src/com/mixpanel/android/mpmetrics" />
+            <source-file src="src/android/com/mixpanel/android/mpmetrics/DecideChecker.java" target-dir="src/com/mixpanel/android/mpmetrics" />
+            <source-file src="src/android/com/mixpanel/android/mpmetrics/DecideUpdates.java" target-dir="src/com/mixpanel/android/mpmetrics" />
+            <source-file src="src/android/com/mixpanel/android/mpmetrics/GCMReceiver.java" target-dir="src/com/mixpanel/android/mpmetrics" />
+            <source-file src="src/android/com/mixpanel/android/mpmetrics/InAppFragment.java" target-dir="src/com/mixpanel/android/mpmetrics" />
+            <source-file src="src/android/com/mixpanel/android/mpmetrics/InAppNotification.java" target-dir="src/com/mixpanel/android/mpmetrics" />
+            <source-file src="src/android/com/mixpanel/android/mpmetrics/InstallReferrerReceiver.java" target-dir="src/com/mixpanel/android/mpmetrics" />
+            <source-file src="src/android/com/mixpanel/android/mpmetrics/MiniCircleImageView.java" target-dir="src/com/mixpanel/android/mpmetrics" />
+            <source-file src="src/android/com/mixpanel/android/mpmetrics/MixpanelActivityLifecycleCallbacks.java" target-dir="src/com/mixpanel/android/mpmetrics" />
+            <source-file src="src/android/com/mixpanel/android/mpmetrics/MixpanelAPI.java" target-dir="src/com/mixpanel/android/mpmetrics" />
+            <source-file src="src/android/com/mixpanel/android/mpmetrics/MPConfig.java" target-dir="src/com/mixpanel/android/mpmetrics" />
+            <source-file src="src/android/com/mixpanel/android/mpmetrics/MPDbAdapter.java" target-dir="src/com/mixpanel/android/mpmetrics" />
+            <source-file src="src/android/com/mixpanel/android/mpmetrics/OnMixpanelUpdatesReceivedListener.java" target-dir="src/com/mixpanel/android/mpmetrics" />
+            <source-file src="src/android/com/mixpanel/android/mpmetrics/PersistentIdentity.java" target-dir="src/com/mixpanel/android/mpmetrics" />
+            <source-file src="src/android/com/mixpanel/android/mpmetrics/ServerMessage.java" target-dir="src/com/mixpanel/android/mpmetrics" />
+            <source-file src="src/android/com/mixpanel/android/mpmetrics/SharedPreferencesLoader.java" target-dir="src/com/mixpanel/android/mpmetrics" />
+            <source-file src="src/android/com/mixpanel/android/mpmetrics/Survey.java" target-dir="src/com/mixpanel/android/mpmetrics" />
+            <source-file src="src/android/com/mixpanel/android/mpmetrics/SurveyCallbacks.java" target-dir="src/com/mixpanel/android/mpmetrics" />
+            <source-file src="src/android/com/mixpanel/android/mpmetrics/SynchronizedReference.java" target-dir="src/com/mixpanel/android/mpmetrics" />
+            <source-file src="src/android/com/mixpanel/android/mpmetrics/SystemInformation.java" target-dir="src/com/mixpanel/android/mpmetrics" />
+            <source-file src="src/android/com/mixpanel/android/mpmetrics/UpdateDisplayState.java" target-dir="src/com/mixpanel/android/mpmetrics" />
+            
+            <source-file src="src/android/com/mixpanel/android/surveys/AlwaysSubmittableEditText.java" target-dir="src/com/mixpanel/android/surveys" />
+            <source-file src="src/android/com/mixpanel/android/surveys/CardCarouselLayout.java" target-dir="src/com/mixpanel/android/surveys" />
+            <source-file src="src/android/com/mixpanel/android/surveys/FadeOnPressButton.java" target-dir="src/com/mixpanel/android/surveys" />
+            <source-file src="src/android/com/mixpanel/android/surveys/FadingImageView.java" target-dir="src/com/mixpanel/android/surveys" />
+            <source-file src="src/android/com/mixpanel/android/surveys/SurveyActivity.java" target-dir="src/com/mixpanel/android/surveys" />
+            <source-file src="src/android/com/mixpanel/android/surveys/SurveyChoiceView.java" target-dir="src/com/mixpanel/android/surveys" />
+            
+            <source-file src="src/android/com/mixpanel/android/util/ActivityImageUtils.java" target-dir="src/com/mixpanel/android/util" />
+            <source-file src="src/android/com/mixpanel/android/util/Base64Coder.java" target-dir="src/com/mixpanel/android/util" />
+            <source-file src="src/android/com/mixpanel/android/util/StackBlurManager.java" target-dir="src/com/mixpanel/android/util" />
+            <source-file src="src/android/com/mixpanel/android/util/StringUtils.java" target-dir="src/com/mixpanel/android/util" />
+            
         <config-file target="AndroidManifest.xml" parent="/manifest">
             <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
             <uses-permission android:name="android.permission.INTERNET" />
