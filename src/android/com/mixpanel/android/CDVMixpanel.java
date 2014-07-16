@@ -29,8 +29,8 @@ public class CDVMixpanel extends CordovaPlugin {
     
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        if ("beep".equals(action)) {
-            this.beep(args.getLong(0));
+        if ("init".equals(action)) {
+            System.out.println("hello world "+action);
             callbackContext.success();
             return true;
         }
