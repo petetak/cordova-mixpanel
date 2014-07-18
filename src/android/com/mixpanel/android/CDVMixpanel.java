@@ -23,7 +23,7 @@ public class CDVMixpanel extends CordovaPlugin {
                     try{
 
                         MixpanelAPI mixpanel = MixpanelAPI.getInstance( this.cordova.getActivity().getApplicationContext(), data.getString( 0 ) );
-                        
+                        mixpanel.identify( data.getString( 1 ) );
                         MixpanelAPI.People people = mixpanel.getPeople();
                         people.identify( data.getString( 1 ) );
                         people.initPushHandling( data.getString( 2 ) );
