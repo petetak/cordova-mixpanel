@@ -74,7 +74,12 @@ Mixpanel.showSurveyWithID = function(id, s, f){
   return exec(s, f, "Mixpanel", "showSurveyWithID", [id]);
 };
 
+Mixpanel.increment = function(property, by, s, f){
+  return exec(s, f, "Mixpanel", "increment", [property, by]);
+};
+
 // Call this to register for push notifications. Content of [options] depends on whether we are working with APNS (iOS) or GCM (Android)
+// Add googleSenderId with your 12 digit Google Sender Id for Android
 Mixpanel.register = function(options, s, f) {
   exec(s, f, "Mixpanel", "register", [options]);
 };

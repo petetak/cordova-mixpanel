@@ -162,6 +162,19 @@ public class CDVMixpanel extends CordovaPlugin {
             return true;
 
         }
+        else if ("increment".equals(action)) {
+                    
+            MixpanelAPI mixpanel = MixpanelAPI.getInstance(this.cordova.getActivity().getApplicationContext(), token);
+            mixpanel.identify(mixpanel.getDistinctId());
+            String property = data.getString(0);
+            double by = data.optDouble(1);
+            mixpanel.increment(property, by);
+            
+            callbackContext.success();
+      
+            return true;
+
+        }
         else if ( "register".equals( action ) ) {
                     
                     try{
@@ -170,7 +183,7 @@ public class CDVMixpanel extends CordovaPlugin {
                         mixpanel.identify(mixpanel.getDistinctId());
                         
                         MixpanelAPI.People people = mixpanel.getPeople();
-                        people.identify( mixpanel.getDistinctId() );
+                        people.identify(mixpanel.getDistinctId());
 
                         JSONObject obj = data.getJSONObject(0);
 
