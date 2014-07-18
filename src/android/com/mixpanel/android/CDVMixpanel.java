@@ -28,7 +28,7 @@ public class CDVMixpanel extends CordovaPlugin {
                         people.identify( data.getString( 1 ) );
                         people.initPushHandling( data.getString( 2 ) );
                         System.out.println( "mixpanel people  " + data.getString( 1 ) + " - " + data.getString( 2 ) + "-" + people );
-
+                        people.set("hello", "world");
                         mixpanel.flush(); // sends the info
 
                         callbackContext.success();
