@@ -18,7 +18,7 @@ import org.json.JSONObject;
 public class CDVMixpanel extends CordovaPlugin {
     
     @Override
-    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+    public boolean execute(String action, JSONArray data, CallbackContext callbackContext) throws JSONException {
         if ("init".equals(action)) {
                     try{
                         MixpanelAPI mixpanel = MixpanelAPI.getInstance(this.cordova.getActivity().getApplicationContext(), data.getString(0));
