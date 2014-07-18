@@ -19,13 +19,15 @@ public class CDVMixpanel extends CordovaPlugin {
     
     @Override
     public boolean execute(String action, JSONArray data, CallbackContext callbackContext) throws JSONException {
-        if ("init".equals(action)) {
+        if ("initPushHandling".equals(action)) {
                     try{
+
                         MixpanelAPI mixpanel = MixpanelAPI.getInstance(this.cordova.getActivity().getApplicationContext(), data.getString(0));
-                        JSONObject props = new JSONObject();    
-                        props.put("Test", "True");
-                        mixpanel.track("Open_App", props);
-                        System.out.println("hello world "+mixpanel+" - "+data.getString(0));
+                        
+                        MixpanelAPI.People people = mixpanel.getPeople();
+                        people.identify(data.getString(1));
+                        people.initPushHandling(data.getString(2));
+                        
                         callbackContext.success();
                     }
                     catch(Exception e){
