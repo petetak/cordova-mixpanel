@@ -165,11 +165,11 @@ public class CDVMixpanel extends CordovaPlugin {
         else if ("increment".equals(action)) {
                     
             MixpanelAPI mixpanel = MixpanelAPI.getInstance(this.cordova.getActivity().getApplicationContext(), token);
-            mixpanel.identify(mixpanel.getDistinctId());
+            mixpanel.getPeople().identify(mixpanel.getDistinctId());
             String property = data.getString(0);
             double by = data.optDouble(1);
-            mixpanel.increment(property, by);
-            
+            mixpanel.getPeople().increment(property, by);
+
             callbackContext.success();
       
             return true;
