@@ -10,7 +10,15 @@ var exec = require('cordova/exec');
 
 var Mixpanel = function(){};
 
+/*
+* Required for Android implementation as token 
+* has to be sent through with various methods
+*
+*/
+Mixpanel.token = null;
+
 Mixpanel.init = function(token, s, f){
+  this.token = token;
   return exec(s, f, "Mixpanel", "init", [token]);
 };
 
