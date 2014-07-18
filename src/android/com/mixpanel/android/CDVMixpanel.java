@@ -17,7 +17,7 @@ import org.json.JSONObject;
 
 public class CDVMixpanel extends CordovaPlugin {
     
-    public final string token;
+    public String token;
 
     @Override
     public boolean execute(String action, JSONArray data, CallbackContext callbackContext) throws JSONException {
@@ -34,7 +34,7 @@ public class CDVMixpanel extends CordovaPlugin {
                     
             MixpanelAPI mixpanel = MixpanelAPI.getInstance(this.cordova.getActivity().getApplicationContext(), token);
             
-            string alias = data.getString(0);
+            String alias = data.getString(0);
     
             mixpanel.alias(alias, mixpanel.getDistinctId());
             mixpanel.identify(mixpanel.getDistinctId());
@@ -46,7 +46,7 @@ public class CDVMixpanel extends CordovaPlugin {
                     
             MixpanelAPI mixpanel = MixpanelAPI.getInstance(this.cordova.getActivity().getApplicationContext(), token);
             
-            string eventName = data.getString(0);
+            String eventName = data.getString(0);
             JSONObject properties = data.getJSONObject(1);
             mixpanel.track(eventName, properties);
 
@@ -58,7 +58,7 @@ public class CDVMixpanel extends CordovaPlugin {
                     
             MixpanelAPI mixpanel = MixpanelAPI.getInstance(this.cordova.getActivity().getApplicationContext(), token);
             
-            string distinctId = null;
+            String distinctId = null;
             if(data.getString(0) != null){
                 distinctId = data.getString(0);
             }
@@ -170,11 +170,11 @@ public class CDVMixpanel extends CordovaPlugin {
                         mixpanel.identify(mixpanel.getDistinctId());
                         
                         MixpanelAPI.People people = mixpanel.getPeople();
-                        mixpanel.getPeople().identify( mixpanel.getDistinctId() );
+                        people.identify( mixpanel.getDistinctId() );
 
                         JSONObject obj = data.getJSONObject(0);
 
-                        people.initPushHandling(obj.get("googleSenderId"));
+                        people.initPushHandling(obj.getString("googleSenderId"));
                         
                         //ensure is sent 
                         mixpanel.flush(); // sends the info
