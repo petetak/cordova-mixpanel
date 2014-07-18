@@ -15,15 +15,9 @@ var Mixpanel = function(){};
 * has to be sent through with various methods
 *
 */
-Mixpanel.token = null;
 
 Mixpanel.init = function(token, s, f){
-  this.token = token;
   return exec(s, f, "Mixpanel", "init", [token]);
-};
-
-Mixpanel.initPushHandling = function(token, userId, googleSenderId, s, f){
-  return exec(s, f, "Mixpanel", "initPushHandling", [token, userId, googleSenderId]);
 };
 
 Mixpanel.track = function(eventName, properties, s, f){
