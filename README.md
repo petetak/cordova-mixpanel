@@ -1,6 +1,8 @@
 # cordova-mixpanel
 
-*iOS only right now. We would happily accept an Android support pull request*
+*iOS only right now. With alpha of Android version started by @petetak*
+
+For now please note you have to change the import import com.MiDrive.MiDriveApp.R; to your own Cordova app - as the resources get compiled into the app itself and this way it can find them.  Will look for a more elegant approach later.
 
 Cordova plugin that integrates the Native Mixpanel SDK in your cordova
 application. Use it to track events, people, or revenue. You can also display

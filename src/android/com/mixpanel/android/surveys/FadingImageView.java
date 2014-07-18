@@ -16,7 +16,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.mixpanel.android.R;
+import com.MiDrive.MiDriveApp.R;
 
 
 public class FadingImageView extends ImageView {

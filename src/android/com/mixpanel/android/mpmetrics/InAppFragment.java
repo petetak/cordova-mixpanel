@@ -25,7 +25,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.mixpanel.android.R;
+import com.MiDrive.MiDriveApp.R;
 
 /**
  * Attached to an Activity when you display a mini in-app notification.

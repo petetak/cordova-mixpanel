@@ -28,7 +28,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
-import com.mixpanel.android.R;
+import com.MiDrive.MiDriveApp.R;
 import com.mixpanel.android.mpmetrics.Survey;
 
 /**
