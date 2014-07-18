@@ -133,8 +133,12 @@
             <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
             <permission android:name="$PACKAGE_NAME.permission.C2D_MESSAGE" android:protectionLevel="signature" />
             <uses-permission android:name="$PACKAGE_NAME.permission.C2D_MESSAGE" />
-            <application>
-                <receiver android:name="com.mixpanel.android.mpmetrics.GCMReceiver"
+            
+                
+            
+        </config-file>   
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <receiver android:name="com.mixpanel.android.mpmetrics.GCMReceiver"
                     android:permission="com.google.android.c2dm.permission.SEND" >
                     <intent-filter>
                         <action android:name="com.google.android.c2dm.intent.RECEIVE" />
@@ -142,8 +146,7 @@
                         <category android:name="$PACKAGE_NAME" />
                     </intent-filter>
                 </receiver>
-            </application>
-        </config-file>   
+        </config>
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="Mixpanel">
                 <param name="android-package" value="com.mixpanel.android.CDVMixpanel"/>

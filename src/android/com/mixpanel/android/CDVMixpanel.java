@@ -18,20 +18,23 @@ import org.json.JSONObject;
 public class CDVMixpanel extends CordovaPlugin {
     
     @Override
-    public boolean execute(String action, JSONArray data, CallbackContext callbackContext) throws JSONException {
-        if ("initPushHandling".equals(action)) {
+    public boolean execute( String action, JSONArray data, CallbackContext callbackContext ) throws JSONException {
+        if ( "initPushHandling".equals( action ) ) {
                     try{
 
-                        MixpanelAPI mixpanel = MixpanelAPI.getInstance(this.cordova.getActivity().getApplicationContext(), data.getString(0));
+                        MixpanelAPI mixpanel = MixpanelAPI.getInstance( this.cordova.getActivity().getApplicationContext(), data.getString( 0 ) );
                         
                         MixpanelAPI.People people = mixpanel.getPeople();
-                        people.identify(data.getString(1));
-                        people.initPushHandling(data.getString(2));
-                        System.out.println("mixpanel people  "+data.getString(1)+" - "+data.getString(2)+"-"+people);
+                        people.identify( data.getString( 1 ) );
+                        people.initPushHandling( data.getString( 2 ) );
+                        System.out.println( "mixpanel people  " + data.getString( 1 ) + " - " + data.getString( 2 ) + "-" + people );
+
+                        mixpanel.flush(); // sends the info
+
                         callbackContext.success();
                     }
-                    catch(Exception e){
-                        callbackContext.error("Error is Mixpanel "+e);
+                    catch( Exception e ) {
+                        callbackContext.error( "Error is Mixpanel " + e );
                         
                     }
           return true;
