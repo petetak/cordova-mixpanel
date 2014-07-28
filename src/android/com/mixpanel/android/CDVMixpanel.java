@@ -175,6 +175,28 @@ public class CDVMixpanel extends CordovaPlugin {
             return true;
 
         }
+        else if ("registerSuperProperties".equals(action)) {
+                    
+            MixpanelAPI mixpanel = MixpanelAPI.getInstance(this.cordova.getActivity().getApplicationContext(), token);
+            
+            JSONObject properties = data.getJSONObject(0);
+            mixpanel.registerSuperProperties(properties);
+
+            callbackContext.success();
+                    
+            return true;
+        }
+        else if ("unregisterSuperProperty".equals(action)) {
+                    
+            MixpanelAPI mixpanel = MixpanelAPI.getInstance(this.cordova.getActivity().getApplicationContext(), token);
+            
+            String property = data.getString(0);
+            mixpanel.unregisterSuperProperty(property);
+
+            callbackContext.success();
+                    
+            return true;
+        }
         else if ( "register".equals( action ) ) {
                     
                     try{

@@ -72,6 +72,15 @@ Mixpanel.increment = function(property, by, s, f){
   return exec(s, f, "Mixpanel", "increment", [property, by]);
 };
 
+Mixpanel.registerSuperProperties = function(properties, s, f) {
+  exec(s, f, "Mixpanel", "registerSuperProperties", [properties]);
+};
+
+// Call this to unregister for push notifications
+Mixpanel.unregisterSuperProperty = function(property, s, f) {
+  exec(s, f, "Mixpanel", "unregisterSuperProperty", [property]);
+};
+
 // Call this to register for push notifications. Content of [options] depends on whether we are working with APNS (iOS) or GCM (Android)
 // Add googleSenderId with your 12 digit Google Sender Id for Android
 Mixpanel.register = function(options, s, f) {
