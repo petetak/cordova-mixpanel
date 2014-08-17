@@ -98,9 +98,11 @@ public class SurveyActivity extends Activity {
         display.getSize(size);
 
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) closeButtonWrapper.getLayoutParams();
-            params.setMargins(0, 0, 0, (int) (size.y * 0.06f)); // make bottom margin 6% of screen height
-            closeButtonWrapper.setLayoutParams(params);
+            if( closeButtonWrapper != null && closeButtonWrapper.getLayoutParams() != null){
+                RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) closeButtonWrapper.getLayoutParams();
+                params.setMargins(0, 0, 0, (int) (size.y * 0.06f)); // make bottom margin 6% of screen height
+                closeButtonWrapper.setLayoutParams(params);
+            }
         }
 
         GradientDrawable gd = new GradientDrawable(
