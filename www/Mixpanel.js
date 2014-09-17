@@ -73,28 +73,28 @@ Mixpanel.increment = function(property, by, s, f){
 };
 
 Mixpanel.registerSuperProperties = function(properties, s, f) {
-  exec(s, f, "Mixpanel", "registerSuperProperties", [properties]);
+  return exec(s, f, "Mixpanel", "registerSuperProperties", [properties]);
 };
 
 // Call this to unregister for push notifications
 Mixpanel.unregisterSuperProperty = function(property, s, f) {
-  exec(s, f, "Mixpanel", "unregisterSuperProperty", [property]);
+  return exec(s, f, "Mixpanel", "unregisterSuperProperty", [property]);
 };
 
 // Call this to register for push notifications. Content of [options] depends on whether we are working with APNS (iOS) or GCM (Android)
 // Add googleSenderId with your 12 digit Google Sender Id for Android
 Mixpanel.register = function(options, s, f) {
-  exec(s, f, "Mixpanel", "register", [options]);
+  return exec(s, f, "Mixpanel", "register", [options]);
 };
 
 // Call this to unregister for push notifications
 Mixpanel.unregister = function(options, s, f) {
-  exec(s, f, "Mixpanel", "unregister", [options]);
+  return exec(s, f, "Mixpanel", "unregister", [options]);
 };
 
 // Call this to set the application icon badge
 Mixpanel.setApplicationIconBadgeNumber = function(badge, s, f) {
-  exec(s, f, "Mixpanel", "setApplicationIconBadgeNumber", [{badge: badge}]);
+  return exec(s, f, "Mixpanel", "setApplicationIconBadgeNumber", [{badge: badge}]);
 };
 
 module.exports = Mixpanel;

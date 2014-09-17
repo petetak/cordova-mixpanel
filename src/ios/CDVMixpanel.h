@@ -32,6 +32,7 @@
 
 -(void)init:(CDVInvokedUrlCommand *)command;
 -(void)track:(CDVInvokedUrlCommand *)command;
+-(void)increment:(CDVInvokedUrlCommand *)command;
 -(void)identify:(CDVInvokedUrlCommand *)command;
 -(void)createAlias:(CDVInvokedUrlCommand *)command;
 -(void)peopleSet:(CDVInvokedUrlCommand *)command;
@@ -43,6 +44,8 @@
 -(void)setShowSurveyOnActive:(CDVInvokedUrlCommand *)command;
 -(void)showSurvey:(CDVInvokedUrlCommand *)command;
 -(void)showSurveyWithID:(CDVInvokedUrlCommand *)command;
+-(void)registerSuperProperties:(CDVInvokedUrlCommand *)command;
+-(void)unregisterSuperProperty:(CDVInvokedUrlCommand *)command;
 
 @end
 

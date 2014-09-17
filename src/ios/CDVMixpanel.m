@@ -88,6 +88,43 @@
     [self successWithCallbackId:command.callbackId];
 }
 
+-(void)increment:(CDVInvokedUrlCommand *)command;
+{
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    
+    NSString *property = [command.arguments objectAtIndex:0];
+    NSNumber *by = [command.arguments objectAtIndex:1];
+    
+    [mixpanel identify:mixpanel.distinctId];
+    [mixpanel.people increment:property by:by];
+    
+    [self successWithCallbackId:command.callbackId];
+}
+
+-(void)registerSuperProperties:(CDVInvokedUrlCommand *)command;
+{
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    
+    NSDictionary *properties = [command.arguments objectAtIndex:0];
+    
+    [mixpanel identify:mixpanel.distinctId];
+    [mixpanel registerSuperProperties:properties];
+    
+    [self successWithCallbackId:command.callbackId];
+}
+
+-(void)unregisterSuperProperty:(CDVInvokedUrlCommand *)command;
+{
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    
+    NSString *property = [command.arguments objectAtIndex:0];
+    
+    [mixpanel identify:mixpanel.distinctId];
+    [mixpanel unregisterSuperProperty:property];
+    
+    [self successWithCallbackId:command.callbackId];
+}
+
 -(void)trackChargeWithProperties:(CDVInvokedUrlCommand *)command;
 {
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
@@ -222,8 +259,26 @@
     }
 
     isInline = NO;
-
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:notificationTypes];
+    
+    //simply apply all if iOS8- if you need to select which notifications via js this code will need updating
+    #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
+        if ([UIApplication respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+            [[UIApplication sharedApplication] registerForRemoteNotificationTypes:notificationTypes];
+        } else {
+            [[UIApplication sharedApplication] registerForRemoteNotifications];
+            UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIRemoteNotificationTypeBadge
+                                                                                                 |UIRemoteNotificationTypeSound
+                                                                                                 |UIRemoteNotificationTypeAlert) categories:nil];
+            [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        }
+    #else
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIRemoteNotificationTypeBadge
+                                                                                         |UIRemoteNotificationTypeSound
+                                                                                         |UIRemoteNotificationTypeAlert) categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    #endif
+    
 
     // if there is a pending startup notification
     if (notificationMessage)
