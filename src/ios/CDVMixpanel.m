@@ -261,23 +261,15 @@
     isInline = NO;
     
     //simply apply all if iOS8- if you need to select which notifications via js this code will need updating
-    #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
-        if ([UIApplication respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-            [[UIApplication sharedApplication] registerForRemoteNotificationTypes:notificationTypes];
-        } else {
-            [[UIApplication sharedApplication] registerForRemoteNotifications];
-            UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIRemoteNotificationTypeBadge
-                                                                                                 |UIRemoteNotificationTypeSound
-                                                                                                 |UIRemoteNotificationTypeAlert) categories:nil];
-            [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-        }
-    #else
+    if (![UIApplication respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:notificationTypes];
+    } else {
         [[UIApplication sharedApplication] registerForRemoteNotifications];
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIRemoteNotificationTypeBadge
-                                                                                         |UIRemoteNotificationTypeSound
-                                                                                         |UIRemoteNotificationTypeAlert) categories:nil];
+                                                                                                |UIRemoteNotificationTypeSound
+                                                                                                |UIRemoteNotificationTypeAlert) categories:nil];
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-    #endif
+    }
     
 
     // if there is a pending startup notification
