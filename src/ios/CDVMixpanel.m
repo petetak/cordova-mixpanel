@@ -261,14 +261,14 @@
     isInline = NO;
     
     //simply apply all if iOS8- if you need to select which notifications via js this code will need updating
-    if ([UIApplication respondsToSelector:@selector(registerForRemoteNotificationTypes:)]) {
-        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:notificationTypes];
-    } else {
+    if ([UIApplication respondsToSelector:@selector(registerUserNotificationSettings:)]) {
         [[UIApplication sharedApplication] registerForRemoteNotifications];
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIRemoteNotificationTypeBadge
-                                                                                                |UIRemoteNotificationTypeSound
-                                                                                                |UIRemoteNotificationTypeAlert) categories:nil];
+                                                                                             |UIRemoteNotificationTypeSound
+                                                                                             |UIRemoteNotificationTypeAlert) categories:nil];
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    } else {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:notificationTypes];
     }
     
 
