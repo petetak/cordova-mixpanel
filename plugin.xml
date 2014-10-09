@@ -171,8 +171,8 @@
     <header-file src="src/ios/AppDelegate+notification.h" />
     <source-file src="src/ios/AppDelegate+notification.m" />
 
-    <source-file src="src/ios/Mixpanel/MPSurvey.storyboard" />
-    <source-file src="src/ios/Mixpanel/MPNotification.storyboard" />
+    <resource-file src="src/ios/Mixpanel/MPSurvey.storyboard" />
+    <resource-file src="src/ios/Mixpanel/MPNotification.storyboard" />
 
     <header-file src="src/ios/Mixpanel/MPNotification.h" />
     <header-file src="src/ios/Mixpanel/MPNotificationViewController.h" />

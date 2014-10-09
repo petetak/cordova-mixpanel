@@ -260,15 +260,16 @@
 
     isInline = NO;
     
-    //simply apply all if iOS8- if you need to select which notifications via js this code will need updating
-    if ([UIApplication respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    //simply apply all if iOS8- if you need to select which notifications via js this code will need updating to bring in settings from above
+    UIApplication *application = [UIApplication sharedApplication];
+    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIRemoteNotificationTypeBadge
                                                                                              |UIRemoteNotificationTypeSound
                                                                                              |UIRemoteNotificationTypeAlert) categories:nil];
-        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        [application registerUserNotificationSettings:settings];
     } else {
-        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:notificationTypes];
+        UIRemoteNotificationType myTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound;
+        [application registerForRemoteNotificationTypes:myTypes];
     }
     
 
@@ -278,6 +279,23 @@
         [self notificationReceived];  // go ahead and process it
     }
 }
+
+
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
+{
+    //register to receive notifications
+    [application registerForRemoteNotifications];
+}
+
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void(^)())completionHandler
+{
+    //handle the actions
+    if ([identifier isEqualToString:@"declineAction"]){
+    }
+    else if ([identifier isEqualToString:@"answerAction"]){
+    }
+}
+
 
 - (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSString *token = [[[[deviceToken description] stringByReplacingOccurrencesOfString:@"<"withString:@""]
